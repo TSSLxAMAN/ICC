@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <!-- Your Custom JavaScript -->
+    <!-- Your Custom JavaScript -->
+
+<script>
+  $(document).ready(function () {
+      // Counter for S.No.
+      var counter = 1;
+
+      // Form submission handler
+      $("#labForm").submit(function (event) {
+          event.preventDefault(); // Prevents the default form submission
+
+          // Get form values
+          var enrollmentNumber = $("#enrollmentNumber").val();
+          var branch = $("#branch").val();
+          var year = $("#year").val();
+          var purpose = $("input[name='flexRadioDefault']:checked").next('label').text().trim() || '';
+          var entryTime = new Date().toLocaleTimeString(); // Current time
+          var exitTime = new Date().toLocaleTimeString(); // Current time
+          currentDate = new Date(); // Capture the current date
+
+          // Update the table with drop-down animation
+          var newRow = $("<tr style='display: none;'><td>" + counter++ + "</td><td>" + enrollmentNumber + "</td><td>" + branch + "</td><td>" + year + "</td><td>" + purpose + "</td><td>" + entryTime + "</td><td><button type='button' class='btn btn-light exitBtn'>Exit</button></td></tr>");
+          $("#labTable tbody").append(newRow);
+          newRow.fadeIn(1000);
+
+          // Clear the form fields
+          $("#labForm")[0].reset();
+      });
+
+      // Exit button click handler with move-up animation
+      $(document).on('click', '.exitBtn', function () {
+          var row = $(this).closest('tr');
+          row.fadeOut(1000, function () {
+              row.remove();
+          });
+      });
+  });
+</script>
+
+
+    <!-- Your Custom Styles -->
+    <style>
+        /* Style for the overlay */
+        .overlay {
+            position: absolute;
+            top: 125px;
+            left: 80px;
+            width: 240px;
+            height: 356px;
+            background-color: #4F2D66;
+            border-radius: 16px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .overlay2 {
+            position: absolute;
+            top: 40px;
+            bottom: 70px;
+            right: 80px;
+            width: 750px;
+            height: 556px;
+            background-color: #4F2D66;
+            border-radius: 16px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .overlay3 {
+            position: absolute;
+            top: 55px;
+            bottom: 70px;
+            right: 95px;
+            width: 720px;
+            height: 526px;
+            background-color: white;
+            border-radius: 16px;
+            overflow-y: auto;
+        }
+
+        .overlay3 table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .overlay3 table,
+        .overlay3 th,
+        .overlay3 td {
+            border: 1px solid #4F2D66;
+        }
+
+        .overlay3 th,
+        .overlay3 td {
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-sm navbar-light" style="background-color: #4F2D66;">
+        <div class="container">
+            <a class="navbar-brand" href="index.html" style="color: aliceblue ; font-weight: bold;">
+                <img src="Images/Integral_University,_Lucknow_logo.png" alt="Logo" height="30"
+                    class="d-inline-block align-top">
+                Integral Computer Centre
+            </a>
+            <a href="admin.html">
+              <button style="border-radius: 16px; border: 2px solid #4F2D66; width: 100px; height: 32px;">
+                <img src="person.svg" alt=""> Admin</button>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Carousel -->
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner" style="height: 635px;">
+          <div class="carousel-item active">
+            <img src="Images/pexels-christina-morillo-1181263.jpg" class="d-block w-100" alt="">
+          </div>
+          <div class="carousel-item">
+            <img src="Images/pexels-christina-morillo-1181675.jpg" class="d-block w-100" alt="">
+          </div>
+          <div class="carousel-item">
+            <img src="Images/pexels-cottonbro-studio-4709285.jpg" class="d-block w-100" alt="">
+          </div>
+          <div class="carousel-item">
+            <img src="Images/pexels-cottonbro-studio-6804604.jpg" class="d-block w-100" alt="">
+          </div>
+          <div class="carousel-item">
+            <img src="Images/pexels-markus-spiske-4439901.jpg" class="d-block w-100" alt="">
+          </div>
+          <div class="carousel-item">
+            <img src="Images/pexels-rodrigo-santos-3888151.jpg " class="d-block w-100" alt="">
+          </div>
+        </div>
+
+        <!-- Form Overlay -->
+        <div class="overlay d-flex align-items-center">
+            <form id="labForm" class="rd-mailform from-fix"
+                style="background-color: #4F2D66; padding: 20px; border-radius: 10px;">
+                <div class="mb-3">
+                  <label for="enrollmentNumber" class="form-label" style="color: white;">Enrollment Number</label>
+                  <input type="text" class="form-control" id="enrollmentNumber" style="border-radius: 8px;" required>
+              </div>
+              <div class="mb-3">
+                  <label for="branch" class="form-label" style="color: white;">Branch</label>
+                  <select class="form-select" id="branch" style="border-radius: 8px; background-color: white; color: #4F2D66;">
+                      <option value="Btech">Btech</option>
+                      <option value="BBA">BBA</option>
+                      <option value="BCA">BCA</option>
+                  </select>
+              </div>
+              <div class="mb-3">
+                  <label for="year" class="form-label" style="color: white;">Year</label>
+                  <select class="form-select" id="year" style="border-radius: 8px; background-color: white; color:#4F2D66;">
+                      <option value="1st">1st</option>
+                      <option value="2nd">2nd</option>
+                      <option value="3rd">3rd</option>
+                      <option value="4th">4th</option>
+                  </select>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1" style="color: white;">
+                  Self Study
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                <label class="form-check-label" for="flexRadioDefault2" style="color: white;">
+                  Class
+                </label>
+              </div>
+              
+                <button type="submit"
+                    class="button button-block button-secondary"
+                    style="width: 207px; background-color:rgb(230, 220, 220); border-color: #4F2D66; color: #4F2D66;">ENTER</button>
+            </form>
+        </div>
+
+        <!-- Additional Overlay -->
+        <div class="overlay2 d-flex align-items-center">
+            <!-- Additional content here -->
+        </div>
+
+        <!-- Table Overlay -->
+        <div class="overlay3" style="text-align-last: center;">
+            <h2>Current Lab Users</h2>
+            <table class="table" id="labTable">
+                <thead>
+                    <tr>
+                        <th>S.No.</th>
+                        <th>Enrollment Number</th>
+                        <th>Branch</th>
+                        <th>Year</th>
+                        <th>Purpose</th>
+                        <th>Entry time</th>
+                        <th>Exit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Existing and dynamically added rows will go here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS (moved to the head for proper order) -->
+
+</body>
+
+</html>
